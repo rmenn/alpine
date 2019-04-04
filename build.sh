@@ -8,5 +8,7 @@ echo ${ALPINE_PARENT}
 
 BASE_URL=http://dl-cdn.alpinelinux.org/alpine/v${ALPINE_PARENT}/releases/${ALPINE_ARCH}
 wget $BASE_URL/$ALPINE_FILENAME
-docker build --build-arg ALPINE_VERSION=${ALPINE_VERSION} --build-arg ALPINE_ARCH=${ALPINE_ARCH} .
+docker build -t rmenn/alpine:${ALPINE_VERSION} --build-arg ALPINE_VERSION=${ALPINE_VERSION} --build-arg ALPINE_ARCH=${ALPINE_ARCH} .
 rm ${ALPINE_FILENAME}
+docker push rmenn/alpine:${ALPINE_VERSION}
+docker rmi rmenn/alpine:${ALPINE_VERSION}
