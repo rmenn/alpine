@@ -1,7 +1,8 @@
-FROM scratch
+FROM --platform=$BUILDPLATFORM scratch
 
+ARG TARGETARCH
 ARG ALPINE_ARCH
 ARG ALPINE_VERSION
 
-ADD alpine-minirootfs-${ALPINE_VERSION}-${ALPINE_ARCH}.tar.gz /
+ADD alpine-minirootfs-${ALPINE_VERSION}-${TARGETARCH}.tar.gz /
 CMD ["/bin/sh"]-
