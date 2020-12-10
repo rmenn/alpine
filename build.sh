@@ -21,5 +21,5 @@ DOCKER_CLI_EXPERIMENTAL=enabled docker buildx version
 docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 docker buildx create --name builder --driver docker-container --driver-opt 'network=host' --buildkitd-flags '--allow-insecure-entitlement network.host' --use
 docker buildx inspect --bootstrap
-docker buildx build --progress=plain --build-arg=ALPINE_VERSION=${ALPINE_VERSION} --no-cache --platform linux/amd64,linux/arm64 -t rmenn/alpine:3.11.6 -f Dockerfile . --push
+docker buildx build --progress=plain --build-arg=ALPINE_VERSION=${ALPINE_VERSION} --no-cache --platform linux/amd64,linux/arm64 -t rmenn/alpine:${ALPINE_VERSION} -f Dockerfile . --push
 rm alpine-minirootfs-*
